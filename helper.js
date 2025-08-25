@@ -4,42 +4,70 @@ import path from "path";
 import { CURSE_WORDS } from "./conts.js";
 import { createClient } from "@deepgram/sdk";
 
-export function extractAudio(videoFile) {
-  return child_process.spawn("ffmpeg", ["-i", videoFile, "-vn", "-f", "wav", "pipe:1"]).stdout;
+export async function extractAudio(videoFile) {
+  return new Promise((resolve, reject) => {
+    const fileName = path.resolve(__dirname, "temp", `${Date.now()}.mp3`);
+
+    const ffmpeg = child_process.spawn("ffmpeg", ["-i", videoFile, "-vn", "-y", fileName]);
+
+    ffmpeg.stdin.on("error", (err) => {
+      console.error("stdin error:", err.message);
+    });
+
+    // ffmpeg.stderr.on("data", (data) => {
+    //   console.error("ffmpeg stderr:", data.toString());
+    // });
+
+    ffmpeg.on("close", (code) => {
+      if (code === 0) {
+        resolve(fileName);
+      } else {
+        reject(new Error(`ffmpeg exited with code ${code}`));
+      }
+    });
+  });
 }
 
-export function addBeeps(videoFile, badSegments) {
-  let mainAudio = [];
-  let beep_creation = [];
-  let beep_play = [];
-  let beep_output = [];
+export function addBeeps(audioFile, badSegments) {
+  return new Promise((resolve, reject) => {
+    const fileName = path.resolve(__dirname, "temp", `${Date.now()}.mp3`);
 
-  badSegments.forEach(({ start, end }, i) => {
-    let duration = end - start;
-    mainAudio.push(`between(t,${start},${end})`);
-    beep_creation.push(`sine=frequency=1000:duration=${duration}[beep${i + 1}]`);
-    beep_play.push(`[beep${i + 1}]adelay=${start * 1000}|${start * 1000}[b${i + 1}]`);
-    beep_output.push(`[b${i + 1}]`);
-  });
+    let mainAudio = [];
+    let beep_creation = [];
+    let beep_play = [];
+    let beep_output = [];
 
-  const muteExpr = mainAudio.join("+");
-  const filterChain = `[0:a]volume=enable='${muteExpr}':volume=0[aud];
+    badSegments.forEach(({ start, end }, i) => {
+      let duration = end - start;
+      mainAudio.push(`between(t,${start},${end})`);
+      beep_creation.push(`sine=frequency=1000:duration=${duration}[beep${i + 1}]`);
+      beep_play.push(`[beep${i + 1}]adelay=${start * 1000}|${start * 1000}[b${i + 1}]`);
+      beep_output.push(`[b${i + 1}]`);
+    });
+
+    const muteExpr = mainAudio.join("+");
+    const filterChain = `[0:a]volume=enable='${muteExpr}':volume=0[aud];
                        ${beep_creation.join(";")};
                        ${beep_play.join(";")};
                        [aud]${beep_output.join("")}amix=inputs=${
-    beep_output.length + 1
-  }:duration=longest:normalize=0[out]`;
+      beep_output.length + 1
+    }:duration=longest:normalize=0[out]`;
 
-  const args = ["-y", "-i", "pipe:0", "-filter_complex", filterChain, "-map", "[out]", "-f", "wav", "pipe:1"];
+    const args = ["-y", "-i", audioFile, "-filter_complex", filterChain, "-map", "[out]", "-f", "wav", fileName];
 
-  const ffmpegProcess = child_process.spawn("ffmpeg", args);
+    const ffmpeg = child_process.spawn("ffmpeg", args);
 
-  extractAudio(videoFile).pipe(ffmpegProcess.stdin);
-
-  return ffmpegProcess.stdout;
+    ffmpeg.on("close", (code) => {
+      if (code === 0) {
+        resolve(fileName);
+      } else {
+        reject(new Error(`ffmpeg exited with code ${code}`));
+      }
+    });
+  });
 }
 
-export async function transcribe(fileStream) {
+export async function transcribe(audioFile) {
   try {
     const deepgram = createClient(process.env.DEEPGRAM_API_KEY);
 
@@ -65,12 +93,12 @@ export async function transcribe(fileStream) {
 export function findBadSegments(segments) {
   return segments.filter((seg) => CURSE_WORDS.some((w) => seg.word.toLowerCase().includes(w)));
 }
-export function replaceAudio(videoFile, censored_audio_stream) {
+export function replaceAudio(videoFile, censored_audio, audioFile) {
   const ffmpeg = child_process.spawn("ffmpeg", [
     "-i",
     videoFile,
     "-i",
-    "pipe:0",
+    censored_audio,
     "-c:v",
     "copy",
     "-map",
@@ -89,40 +117,30 @@ export function replaceAudio(videoFile, censored_audio_stream) {
     console.error("stdin error:", err.message);
   });
 
-  ffmpeg.stderr.on("data", (data) => {
-    console.error("ffmpeg stderr:", data.toString());
-  });
+  // ffmpeg.stderr.on("data", (data) => {
+  //   console.error("ffmpeg stderr:", data.toString());
+  // });
 
   ffmpeg.on("close", (code) => {
-    console.log("ffmpeg exited with code", code);
-  });
+    fs.unlinkSync(audioFile);
+    fs.unlinkSync(censored_audio);
 
-  censored_audio_stream.pipe(ffmpeg.stdin);
+    fs.unlinkSync(videoFile);
+  });
 
   return ffmpeg.stdout;
 }
 
-export const pipeLine = async ({ videoFile }) => {
-  const pipe1 = extractAudio(videoFile);
+export const pipeLine = async ({ videoFile, res }) => {
+  const audioFile = await extractAudio(videoFile);
 
-  const audio_response = await transcribe(pipe1);
+  const audio_response = await transcribe(audioFile);
 
   const badSegments = findBadSegments(audio_response);
 
-  const censored_audio_stream = addBeeps(videoFile, badSegments);
+  const censored_audio = await addBeeps(audioFile, badSegments);
 
-  const finalVideo = replaceAudio(videoFile, censored_audio_stream);
-
-  const output = fs.createWriteStream("output.mp4");
-  finalVideo.pipe(output);
-
-  return new Promise((resolve, reject) => {
-    output.on("finish", (message) => {
-      resolve();
-    });
-    output.on("error", (error) => {
-      console.log(error);
-      reject();
-    });
-  });
+  const finalVideo = replaceAudio(videoFile, censored_audio, audioFile);
+  res.setHeader("Content-Type", "video/mp4");
+  finalVideo.pipe(res);
 };

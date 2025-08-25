@@ -1,20 +1,49 @@
-import fs from "fs";
 import "dotenv/config";
+import fs from "fs";
+import express from "express";
 import { pipeLine } from "./helper.js";
 import { fileURLToPath } from "url";
-import { dirname } from "path";
-// import busboy from "busboy";
+import path, { dirname } from "path";
+import Busboy from "busboy";
+import { getFileExtension } from "./conts.js";
 
 global.__filename = fileURLToPath(import.meta.url);
 global.__dirname = dirname(__filename);
 
-(async () => {
-  const videoFile = "./original.mp4";
-  const audioFile = "original_audio.mp3";
-  const censoredAudio = "censored_audio.mp3";
-  const outputVideo = "output.mp4";
+const app = express();
 
-  await pipeLine({ videoFile });
+app.post("/censor", async (req, res) => {
+  try {
+    const busboy = Busboy({ headers: req.headers });
 
-  process.exit();
-})();
+    let tempVideoFile;
+
+    busboy.on("file", (fieldname, file, filename) => {
+      tempVideoFile = path.resolve(__dirname, "temp", `${Date.now()}.${getFileExtension(filename.mimeType)}`);
+
+      const writeStream = fs.createWriteStream(tempVideoFile);
+
+      file.pipe(writeStream);
+    });
+
+    busboy.on("finish", async () => {
+      await pipeLine({ videoFile: tempVideoFile, res });
+    });
+
+    return req.pipe(busboy);
+  } catch {
+    console.error(error);
+    res.status(500).send("Error processing video");
+  }
+});
+
+app.get("/del", async (req, res) => {
+  fs.unlink(tempVideoFile, (err) => {
+    if (err) console.log(err);
+    else console.log("removed");
+  });
+});
+
+app.listen(8080, () => {
+  console.log(`App listing on port 8080`);
+});
