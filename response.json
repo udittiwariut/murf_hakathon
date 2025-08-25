@@ -1,0 +1,2515 @@
+{
+  "result": {
+    "metadata": {
+      "transaction_key": "deprecated",
+      "request_id": "5240fcf7-f661-4ab2-b909-397b2fe615c7",
+      "sha256": "00f21d3e3a0d90a69b8ffb92e2f0694ae845d13b5af1258329cf6560235ce5f5",
+      "created": "2025-08-25T05:50:29.625Z",
+      "duration": 254.06694,
+      "channels": 1,
+      "models": [
+        "2187e11a-3532-4498-b076-81fa530bdd49"
+      ],
+      "model_info": {
+        "2187e11a-3532-4498-b076-81fa530bdd49": {
+          "name": "general-nova-3",
+          "version": "2025-07-31.0",
+          "arch": "nova-3"
+        }
+      }
+    },
+    "results": {
+      "channels": [
+        {
+          "alternatives": [
+            {
+              "transcript": "the entire channel four news team i'm veronica corningstone and i'm ron burgundy go fuck yourself san diego knock knock who's there go fuck yourself fuck seriously enough is enough i have had it with these motherfucking snakes on this motherfucking plane yippee ki motherfucker don't worry my prod is at the cleaners along with my hoodie and my fuck you flip flops you pretentious douchebags woah woah woah miss slippy the part of the story i don't like is that the little boy gave up looking for happy after an hour he didn't put posters up or anything he just sat on the porch like a goon and waited that little boy's gotta think you gotta pet you got a responsibility if your dog is lost you don't look for an hour then call it quits you get your ass out there and you find that fucking dog so ready yeah it's me so oh you fucker i'm sorry i'm sorry that's just your job got knocked the fuck out twizzes are red violets are blue fuck you whore mister doyle how do you feel how the fuck do you feel what an inspiration put it under the handle press that in okay now on open the fucking door that is a stupid design i know there's not too many girls that are this beautiful and sexy and funny and yeah the whole deal yes but cameron diaz fuck i want a fucking car right fucking now i'm a living organism nothing dead will go i didn't build a fucking thing okay okay family fuck he's racing back to new york he just came in for a few hours to to fuck me takes a few hours salad please baby fuel greens what did you call me no i i i i didn't call you anything you want a salad yeah do you do you have a green salad what the fuck color would it be i'm bruce nolan for eyewitness news back to you fuckers fuck me glad it don't fuck with the lords of hell yes don't fuck with the babysitter fucking joking what the fuck was that what the hell i have been worried sick relax honey i just took him to the mall to hang out the mall closes at nine it's twelve o'clock you stopped off for ice cream when the fuck did we get ice cream excuse me i'm eric lentcher james xavier don't fuck yourself",
+              "confidence": 0.9944718,
+              "words": [
+                {
+                  "word": "the",
+                  "start": 0,
+                  "end": 0.32,
+                  "confidence": 0.8444247
+                },
+                {
+                  "word": "entire",
+                  "start": 0.32,
+                  "end": 0.71999997,
+                  "confidence": 0.99932706
+                },
+                {
+                  "word": "channel",
+                  "start": 0.71999997,
+                  "end": 1.04,
+                  "confidence": 0.54037327
+                },
+                {
+                  "word": "four",
+                  "start": 1.04,
+                  "end": 1.28,
+                  "confidence": 0.7854977
+                },
+                {
+                  "word": "news",
+                  "start": 1.28,
+                  "end": 1.5999999,
+                  "confidence": 0.60327244
+                },
+                {
+                  "word": "team",
+                  "start": 1.5999999,
+                  "end": 2.08,
+                  "confidence": 0.886341
+                },
+                {
+                  "word": "i'm",
+                  "start": 2.08,
+                  "end": 2.32,
+                  "confidence": 0.9994333
+                },
+                {
+                  "word": "veronica",
+                  "start": 2.32,
+                  "end": 2.8799999,
+                  "confidence": 0.99292433
+                },
+                {
+                  "word": "corningstone",
+                  "start": 2.8799999,
+                  "end": 3.6799998,
+                  "confidence": 0.972958
+                },
+                {
+                  "word": "and",
+                  "start": 3.6799998,
+                  "end": 4,
+                  "confidence": 0.99557894
+                },
+                {
+                  "word": "i'm",
+                  "start": 4,
+                  "end": 4.24,
+                  "confidence": 0.996699
+                },
+                {
+                  "word": "ron",
+                  "start": 4.24,
+                  "end": 4.56,
+                  "confidence": 0.9988009
+                },
+                {
+                  "word": "burgundy",
+                  "start": 4.56,
+                  "end": 5.36,
+                  "confidence": 0.99448544
+                },
+                {
+                  "word": "go",
+                  "start": 5.68,
+                  "end": 6,
+                  "confidence": 0.99953115
+                },
+                {
+                  "word": "fuck",
+                  "start": 6,
+                  "end": 6.3199997,
+                  "confidence": 0.99784625
+                },
+                {
+                  "word": "yourself",
+                  "start": 6.3199997,
+                  "end": 6.8799996,
+                  "confidence": 0.954374
+                },
+                {
+                  "word": "san",
+                  "start": 6.8799996,
+                  "end": 7.12,
+                  "confidence": 0.9888775
+                },
+                {
+                  "word": "diego",
+                  "start": 7.12,
+                  "end": 7.84,
+                  "confidence": 0.99711245
+                },
+                {
+                  "word": "knock",
+                  "start": 8.88,
+                  "end": 9.28,
+                  "confidence": 0.9982828
+                },
+                {
+                  "word": "knock",
+                  "start": 9.28,
+                  "end": 9.999999,
+                  "confidence": 0.8098826
+                },
+                {
+                  "word": "who's",
+                  "start": 10.4,
+                  "end": 10.88,
+                  "confidence": 0.99261427
+                },
+                {
+                  "word": "there",
+                  "start": 10.88,
+                  "end": 11.44,
+                  "confidence": 0.98917663
+                },
+                {
+                  "word": "go",
+                  "start": 14.559999,
+                  "end": 14.799999,
+                  "confidence": 0.9995055
+                },
+                {
+                  "word": "fuck",
+                  "start": 14.799999,
+                  "end": 15.04,
+                  "confidence": 0.9994999
+                },
+                {
+                  "word": "yourself",
+                  "start": 15.04,
+                  "end": 15.44,
+                  "confidence": 0.9970788
+                },
+                {
+                  "word": "fuck",
+                  "start": 19.295,
+                  "end": 20.015,
+                  "confidence": 0.9634524
+                },
+                {
+                  "word": "seriously",
+                  "start": 20.255,
+                  "end": 21.055,
+                  "confidence": 0.98498404
+                },
+                {
+                  "word": "enough",
+                  "start": 21.375,
+                  "end": 21.695,
+                  "confidence": 0.7015247
+                },
+                {
+                  "word": "is",
+                  "start": 21.695,
+                  "end": 22.015,
+                  "confidence": 0.9768639
+                },
+                {
+                  "word": "enough",
+                  "start": 22.015,
+                  "end": 22.574999,
+                  "confidence": 0.98620564
+                },
+                {
+                  "word": "i",
+                  "start": 22.974998,
+                  "end": 23.134998,
+                  "confidence": 0.9987551
+                },
+                {
+                  "word": "have",
+                  "start": 23.134998,
+                  "end": 23.375,
+                  "confidence": 0.7955752
+                },
+                {
+                  "word": "had",
+                  "start": 23.375,
+                  "end": 23.695,
+                  "confidence": 0.99698037
+                },
+                {
+                  "word": "it",
+                  "start": 23.695,
+                  "end": 23.855,
+                  "confidence": 0.9933321
+                },
+                {
+                  "word": "with",
+                  "start": 23.855,
+                  "end": 24.095,
+                  "confidence": 0.998628
+                },
+                {
+                  "word": "these",
+                  "start": 24.095,
+                  "end": 24.335,
+                  "confidence": 0.98206675
+                },
+                {
+                  "word": "motherfucking",
+                  "start": 24.335,
+                  "end": 25.134998,
+                  "confidence": 0.98801905
+                },
+                {
+                  "word": "snakes",
+                  "start": 25.134998,
+                  "end": 25.855,
+                  "confidence": 0.99564767
+                },
+                {
+                  "word": "on",
+                  "start": 25.855,
+                  "end": 26.175,
+                  "confidence": 0.9839272
+                },
+                {
+                  "word": "this",
+                  "start": 26.175,
+                  "end": 26.494999,
+                  "confidence": 0.9941789
+                },
+                {
+                  "word": "motherfucking",
+                  "start": 26.494999,
+                  "end": 27.294998,
+                  "confidence": 0.998015
+                },
+                {
+                  "word": "plane",
+                  "start": 27.294998,
+                  "end": 27.775,
+                  "confidence": 0.991837
+                },
+                {
+                  "word": "yippee",
+                  "start": 29.07,
+                  "end": 29.47,
+                  "confidence": 0.9756389
+                },
+                {
+                  "word": "ki",
+                  "start": 29.47,
+                  "end": 29.95,
+                  "confidence": 0.8487039
+                },
+                {
+                  "word": "motherfucker",
+                  "start": 29.95,
+                  "end": 30.99,
+                  "confidence": 0.9936681
+                },
+                {
+                  "word": "don't",
+                  "start": 32.35,
+                  "end": 32.75,
+                  "confidence": 0.6872414
+                },
+                {
+                  "word": "worry",
+                  "start": 32.75,
+                  "end": 33.07,
+                  "confidence": 0.8994316
+                },
+                {
+                  "word": "my",
+                  "start": 33.07,
+                  "end": 33.39,
+                  "confidence": 0.9960562
+                },
+                {
+                  "word": "prod",
+                  "start": 33.39,
+                  "end": 33.71,
+                  "confidence": 0.27465054
+                },
+                {
+                  "word": "is",
+                  "start": 33.71,
+                  "end": 33.87,
+                  "confidence": 0.7669979
+                },
+                {
+                  "word": "at",
+                  "start": 33.87,
+                  "end": 34.03,
+                  "confidence": 0.53259337
+                },
+                {
+                  "word": "the",
+                  "start": 34.03,
+                  "end": 34.19,
+                  "confidence": 0.97387004
+                },
+                {
+                  "word": "cleaners",
+                  "start": 34.19,
+                  "end": 34.989998,
+                  "confidence": 0.986019
+                },
+                {
+                  "word": "along",
+                  "start": 34.989998,
+                  "end": 35.47,
+                  "confidence": 0.46308425
+                },
+                {
+                  "word": "with",
+                  "start": 35.47,
+                  "end": 35.63,
+                  "confidence": 0.9994338
+                },
+                {
+                  "word": "my",
+                  "start": 35.63,
+                  "end": 35.79,
+                  "confidence": 0.99857867
+                },
+                {
+                  "word": "hoodie",
+                  "start": 35.79,
+                  "end": 36.11,
+                  "confidence": 0.9973377
+                },
+                {
+                  "word": "and",
+                  "start": 36.11,
+                  "end": 36.27,
+                  "confidence": 0.96431214
+                },
+                {
+                  "word": "my",
+                  "start": 36.27,
+                  "end": 36.35,
+                  "confidence": 0.99854773
+                },
+                {
+                  "word": "fuck",
+                  "start": 36.35,
+                  "end": 36.59,
+                  "confidence": 0.88682455
+                },
+                {
+                  "word": "you",
+                  "start": 36.59,
+                  "end": 36.75,
+                  "confidence": 0.98893565
+                },
+                {
+                  "word": "flip",
+                  "start": 36.75,
+                  "end": 37.07,
+                  "confidence": 0.9977016
+                },
+                {
+                  "word": "flops",
+                  "start": 37.07,
+                  "end": 37.63,
+                  "confidence": 0.8470711
+                },
+                {
+                  "word": "you",
+                  "start": 37.63,
+                  "end": 37.87,
+                  "confidence": 0.9988091
+                },
+                {
+                  "word": "pretentious",
+                  "start": 37.87,
+                  "end": 38.510002,
+                  "confidence": 0.9979984
+                },
+                {
+                  "word": "douchebags",
+                  "start": 38.510002,
+                  "end": 39.47,
+                  "confidence": 0.96633387
+                },
+                {
+                  "word": "woah",
+                  "start": 39.47,
+                  "end": 39.95,
+                  "confidence": 0.9165984
+                },
+                {
+                  "word": "woah",
+                  "start": 39.95,
+                  "end": 40.19,
+                  "confidence": 0.99729323
+                },
+                {
+                  "word": "woah",
+                  "start": 40.19,
+                  "end": 40.510002,
+                  "confidence": 0.9735985
+                },
+                {
+                  "word": "miss",
+                  "start": 40.510002,
+                  "end": 40.67,
+                  "confidence": 0.95254755
+                },
+                {
+                  "word": "slippy",
+                  "start": 40.67,
+                  "end": 41.47,
+                  "confidence": 0.86594695
+                },
+                {
+                  "word": "the",
+                  "start": 41.79,
+                  "end": 42.03,
+                  "confidence": 0.99240994
+                },
+                {
+                  "word": "part",
+                  "start": 42.03,
+                  "end": 42.19,
+                  "confidence": 0.99972266
+                },
+                {
+                  "word": "of",
+                  "start": 42.19,
+                  "end": 42.27,
+                  "confidence": 0.998044
+                },
+                {
+                  "word": "the",
+                  "start": 42.27,
+                  "end": 42.43,
+                  "confidence": 0.9777209
+                },
+                {
+                  "word": "story",
+                  "start": 42.43,
+                  "end": 42.59,
+                  "confidence": 0.9998374
+                },
+                {
+                  "word": "i",
+                  "start": 42.59,
+                  "end": 42.91,
+                  "confidence": 0.9944718
+                },
+                {
+                  "word": "don't",
+                  "start": 42.91,
+                  "end": 43.07,
+                  "confidence": 0.9998795
+                },
+                {
+                  "word": "like",
+                  "start": 43.07,
+                  "end": 43.47,
+                  "confidence": 0.99989307
+                },
+                {
+                  "word": "is",
+                  "start": 43.515,
+                  "end": 43.835,
+                  "confidence": 0.9766876
+                },
+                {
+                  "word": "that",
+                  "start": 43.835,
+                  "end": 43.995,
+                  "confidence": 0.9992348
+                },
+                {
+                  "word": "the",
+                  "start": 43.995,
+                  "end": 44.155,
+                  "confidence": 0.99561524
+                },
+                {
+                  "word": "little",
+                  "start": 44.155,
+                  "end": 44.395,
+                  "confidence": 0.99943596
+                },
+                {
+                  "word": "boy",
+                  "start": 44.395,
+                  "end": 44.555,
+                  "confidence": 0.9996
+                },
+                {
+                  "word": "gave",
+                  "start": 44.555,
+                  "end": 44.875,
+                  "confidence": 0.99975735
+                },
+                {
+                  "word": "up",
+                  "start": 44.875,
+                  "end": 44.954998,
+                  "confidence": 0.9998092
+                },
+                {
+                  "word": "looking",
+                  "start": 44.954998,
+                  "end": 45.274998,
+                  "confidence": 0.9985435
+                },
+                {
+                  "word": "for",
+                  "start": 45.274998,
+                  "end": 45.434998,
+                  "confidence": 0.9988613
+                },
+                {
+                  "word": "happy",
+                  "start": 45.434998,
+                  "end": 45.755,
+                  "confidence": 0.45944202
+                },
+                {
+                  "word": "after",
+                  "start": 45.755,
+                  "end": 46.075,
+                  "confidence": 0.99961686
+                },
+                {
+                  "word": "an",
+                  "start": 46.075,
+                  "end": 46.315,
+                  "confidence": 0.9992053
+                },
+                {
+                  "word": "hour",
+                  "start": 46.315,
+                  "end": 46.875,
+                  "confidence": 0.99857295
+                },
+                {
+                  "word": "he",
+                  "start": 47.355,
+                  "end": 47.595,
+                  "confidence": 0.99972945
+                },
+                {
+                  "word": "didn't",
+                  "start": 47.595,
+                  "end": 47.754997,
+                  "confidence": 0.99995226
+                },
+                {
+                  "word": "put",
+                  "start": 47.754997,
+                  "end": 48.075,
+                  "confidence": 0.99852777
+                },
+                {
+                  "word": "posters",
+                  "start": 48.075,
+                  "end": 48.555,
+                  "confidence": 0.9997014
+                },
+                {
+                  "word": "up",
+                  "start": 48.555,
+                  "end": 48.715,
+                  "confidence": 0.9997532
+                },
+                {
+                  "word": "or",
+                  "start": 48.715,
+                  "end": 48.954998,
+                  "confidence": 0.99590814
+                },
+                {
+                  "word": "anything",
+                  "start": 48.954998,
+                  "end": 49.355,
+                  "confidence": 0.94496584
+                },
+                {
+                  "word": "he",
+                  "start": 49.355,
+                  "end": 49.515,
+                  "confidence": 0.99802077
+                },
+                {
+                  "word": "just",
+                  "start": 49.515,
+                  "end": 49.675,
+                  "confidence": 0.99964094
+                },
+                {
+                  "word": "sat",
+                  "start": 49.675,
+                  "end": 49.995,
+                  "confidence": 0.9996662
+                },
+                {
+                  "word": "on",
+                  "start": 49.995,
+                  "end": 50.075,
+                  "confidence": 0.99967694
+                },
+                {
+                  "word": "the",
+                  "start": 50.075,
+                  "end": 50.235,
+                  "confidence": 0.7022254
+                },
+                {
+                  "word": "porch",
+                  "start": 50.235,
+                  "end": 50.475,
+                  "confidence": 0.9991416
+                },
+                {
+                  "word": "like",
+                  "start": 50.475,
+                  "end": 50.635,
+                  "confidence": 0.98224753
+                },
+                {
+                  "word": "a",
+                  "start": 50.635,
+                  "end": 50.875,
+                  "confidence": 0.9975683
+                },
+                {
+                  "word": "goon",
+                  "start": 50.875,
+                  "end": 51.195,
+                  "confidence": 0.995929
+                },
+                {
+                  "word": "and",
+                  "start": 51.195,
+                  "end": 51.434998,
+                  "confidence": 0.9935173
+                },
+                {
+                  "word": "waited",
+                  "start": 51.434998,
+                  "end": 52.074997,
+                  "confidence": 0.9991806
+                },
+                {
+                  "word": "that",
+                  "start": 52.395,
+                  "end": 52.635,
+                  "confidence": 0.9982133
+                },
+                {
+                  "word": "little",
+                  "start": 52.635,
+                  "end": 52.875,
+                  "confidence": 0.9994752
+                },
+                {
+                  "word": "boy's",
+                  "start": 52.875,
+                  "end": 53.195,
+                  "confidence": 0.95496994
+                },
+                {
+                  "word": "gotta",
+                  "start": 53.195,
+                  "end": 53.355,
+                  "confidence": 0.77043295
+                },
+                {
+                  "word": "think",
+                  "start": 53.355,
+                  "end": 53.754997,
+                  "confidence": 0.8653612
+                },
+                {
+                  "word": "you",
+                  "start": 53.754997,
+                  "end": 53.835,
+                  "confidence": 0.99959177
+                },
+                {
+                  "word": "gotta",
+                  "start": 53.835,
+                  "end": 54.074997,
+                  "confidence": 0.72082645
+                },
+                {
+                  "word": "pet",
+                  "start": 54.074997,
+                  "end": 54.875,
+                  "confidence": 0.9786813
+                },
+                {
+                  "word": "you",
+                  "start": 54.954998,
+                  "end": 55.195,
+                  "confidence": 0.9998722
+                },
+                {
+                  "word": "got",
+                  "start": 55.195,
+                  "end": 55.434998,
+                  "confidence": 0.7762867
+                },
+                {
+                  "word": "a",
+                  "start": 55.434998,
+                  "end": 55.595,
+                  "confidence": 0.99467444
+                },
+                {
+                  "word": "responsibility",
+                  "start": 55.595,
+                  "end": 56.315,
+                  "confidence": 0.9994027
+                },
+                {
+                  "word": "if",
+                  "start": 57.17,
+                  "end": 57.489998,
+                  "confidence": 0.9992612
+                },
+                {
+                  "word": "your",
+                  "start": 57.489998,
+                  "end": 57.649998,
+                  "confidence": 0.98459345
+                },
+                {
+                  "word": "dog",
+                  "start": 57.649998,
+                  "end": 57.89,
+                  "confidence": 0.9994648
+                },
+                {
+                  "word": "is",
+                  "start": 57.89,
+                  "end": 58.129997,
+                  "confidence": 0.5347015
+                },
+                {
+                  "word": "lost",
+                  "start": 58.129997,
+                  "end": 58.37,
+                  "confidence": 0.9782436
+                },
+                {
+                  "word": "you",
+                  "start": 58.37,
+                  "end": 58.609997,
+                  "confidence": 0.9996567
+                },
+                {
+                  "word": "don't",
+                  "start": 58.609997,
+                  "end": 58.85,
+                  "confidence": 0.9997059
+                },
+                {
+                  "word": "look",
+                  "start": 58.85,
+                  "end": 59.09,
+                  "confidence": 0.9991308
+                },
+                {
+                  "word": "for",
+                  "start": 59.09,
+                  "end": 59.25,
+                  "confidence": 0.99965584
+                },
+                {
+                  "word": "an",
+                  "start": 59.25,
+                  "end": 59.489998,
+                  "confidence": 0.99751556
+                },
+                {
+                  "word": "hour",
+                  "start": 59.489998,
+                  "end": 59.649998,
+                  "confidence": 0.9999269
+                },
+                {
+                  "word": "then",
+                  "start": 59.649998,
+                  "end": 59.89,
+                  "confidence": 0.5350577
+                },
+                {
+                  "word": "call",
+                  "start": 59.89,
+                  "end": 60.21,
+                  "confidence": 0.99851125
+                },
+                {
+                  "word": "it",
+                  "start": 60.21,
+                  "end": 60.37,
+                  "confidence": 0.99874026
+                },
+                {
+                  "word": "quits",
+                  "start": 60.37,
+                  "end": 60.93,
+                  "confidence": 0.99764615
+                },
+                {
+                  "word": "you",
+                  "start": 60.93,
+                  "end": 61.17,
+                  "confidence": 0.99961615
+                },
+                {
+                  "word": "get",
+                  "start": 61.17,
+                  "end": 61.41,
+                  "confidence": 0.9975292
+                },
+                {
+                  "word": "your",
+                  "start": 61.41,
+                  "end": 61.57,
+                  "confidence": 0.9985934
+                },
+                {
+                  "word": "ass",
+                  "start": 61.57,
+                  "end": 61.809998,
+                  "confidence": 0.99918896
+                },
+                {
+                  "word": "out",
+                  "start": 61.809998,
+                  "end": 62.05,
+                  "confidence": 0.99948126
+                },
+                {
+                  "word": "there",
+                  "start": 62.05,
+                  "end": 62.21,
+                  "confidence": 0.9965289
+                },
+                {
+                  "word": "and",
+                  "start": 62.21,
+                  "end": 62.449997,
+                  "confidence": 0.7162126
+                },
+                {
+                  "word": "you",
+                  "start": 62.449997,
+                  "end": 62.53,
+                  "confidence": 0.9983169
+                },
+                {
+                  "word": "find",
+                  "start": 62.53,
+                  "end": 62.85,
+                  "confidence": 0.9879821
+                },
+                {
+                  "word": "that",
+                  "start": 62.85,
+                  "end": 63.17,
+                  "confidence": 0.99593866
+                },
+                {
+                  "word": "fucking",
+                  "start": 63.17,
+                  "end": 63.57,
+                  "confidence": 0.98544645
+                },
+                {
+                  "word": "dog",
+                  "start": 63.57,
+                  "end": 64.369995,
+                  "confidence": 0.9773941
+                },
+                {
+                  "word": "so",
+                  "start": 66.77,
+                  "end": 67.09,
+                  "confidence": 0.9373251
+                },
+                {
+                  "word": "ready",
+                  "start": 67.09,
+                  "end": 67.729996,
+                  "confidence": 0.91328645
+                },
+                {
+                  "word": "yeah",
+                  "start": 67.729996,
+                  "end": 68.29,
+                  "confidence": 0.93849254
+                },
+                {
+                  "word": "it's",
+                  "start": 70.049995,
+                  "end": 71.25,
+                  "confidence": 0.6423248
+                },
+                {
+                  "word": "me",
+                  "start": 70.755,
+                  "end": 71.235,
+                  "confidence": 0.63632345
+                },
+                {
+                  "word": "so",
+                  "start": 71.235,
+                  "end": 71.635,
+                  "confidence": 0.7806953
+                },
+                {
+                  "word": "oh",
+                  "start": 72.675,
+                  "end": 73.955,
+                  "confidence": 0.8477008
+                },
+                {
+                  "word": "you",
+                  "start": 74.275,
+                  "end": 74.915,
+                  "confidence": 0.9955207
+                },
+                {
+                  "word": "fucker",
+                  "start": 75.155,
+                  "end": 76.034996,
+                  "confidence": 0.9765138
+                },
+                {
+                  "word": "i'm",
+                  "start": 77.235,
+                  "end": 77.795,
+                  "confidence": 0.6836975
+                },
+                {
+                  "word": "sorry",
+                  "start": 77.795,
+                  "end": 78.195,
+                  "confidence": 0.9939396
+                },
+                {
+                  "word": "i'm",
+                  "start": 78.195,
+                  "end": 78.435,
+                  "confidence": 0.99966204
+                },
+                {
+                  "word": "sorry",
+                  "start": 78.435,
+                  "end": 78.835,
+                  "confidence": 0.99874014
+                },
+                {
+                  "word": "that's",
+                  "start": 78.835,
+                  "end": 79.235,
+                  "confidence": 0.91452086
+                },
+                {
+                  "word": "just",
+                  "start": 79.235,
+                  "end": 79.395,
+                  "confidence": 0.99956495
+                },
+                {
+                  "word": "your",
+                  "start": 79.395,
+                  "end": 79.555,
+                  "confidence": 0.99866235
+                },
+                {
+                  "word": "job",
+                  "start": 79.555,
+                  "end": 80.115,
+                  "confidence": 0.9837607
+                },
+                {
+                  "word": "got",
+                  "start": 82.994995,
+                  "end": 83.315,
+                  "confidence": 0.6839947
+                },
+                {
+                  "word": "knocked",
+                  "start": 83.315,
+                  "end": 83.635,
+                  "confidence": 0.9092414
+                },
+                {
+                  "word": "the",
+                  "start": 83.635,
+                  "end": 83.955,
+                  "confidence": 0.9644661
+                },
+                {
+                  "word": "fuck",
+                  "start": 83.955,
+                  "end": 84.275,
+                  "confidence": 0.9749808
+                },
+                {
+                  "word": "out",
+                  "start": 84.275,
+                  "end": 84.835,
+                  "confidence": 0.8072464
+                },
+                {
+                  "word": "twizzes",
+                  "start": 84.994995,
+                  "end": 85.395,
+                  "confidence": 0.60980505
+                },
+                {
+                  "word": "are",
+                  "start": 85.395,
+                  "end": 85.555,
+                  "confidence": 0.98542655
+                },
+                {
+                  "word": "red",
+                  "start": 85.555,
+                  "end": 85.795,
+                  "confidence": 0.75291073
+                },
+                {
+                  "word": "violets",
+                  "start": 86.04,
+                  "end": 86.520004,
+                  "confidence": 0.9956449
+                },
+                {
+                  "word": "are",
+                  "start": 86.520004,
+                  "end": 86.68,
+                  "confidence": 0.99892646
+                },
+                {
+                  "word": "blue",
+                  "start": 86.68,
+                  "end": 87.32,
+                  "confidence": 0.8990681
+                },
+                {
+                  "word": "fuck",
+                  "start": 87.8,
+                  "end": 88.12,
+                  "confidence": 0.99880564
+                },
+                {
+                  "word": "you",
+                  "start": 88.12,
+                  "end": 88.44,
+                  "confidence": 0.83295405
+                },
+                {
+                  "word": "whore",
+                  "start": 88.44,
+                  "end": 88.76,
+                  "confidence": 0.9925173
+                },
+                {
+                  "word": "mister",
+                  "start": 88.76,
+                  "end": 89.16,
+                  "confidence": 0.9830776
+                },
+                {
+                  "word": "doyle",
+                  "start": 89.16,
+                  "end": 89.48,
+                  "confidence": 0.9904537
+                },
+                {
+                  "word": "how",
+                  "start": 89.48,
+                  "end": 89.64,
+                  "confidence": 0.99864334
+                },
+                {
+                  "word": "do",
+                  "start": 89.64,
+                  "end": 89.72,
+                  "confidence": 0.9981254
+                },
+                {
+                  "word": "you",
+                  "start": 89.72,
+                  "end": 89.8,
+                  "confidence": 0.9990293
+                },
+                {
+                  "word": "feel",
+                  "start": 89.8,
+                  "end": 90.28001,
+                  "confidence": 0.99947315
+                },
+                {
+                  "word": "how",
+                  "start": 90.28001,
+                  "end": 90.600006,
+                  "confidence": 0.92678
+                },
+                {
+                  "word": "the",
+                  "start": 90.600006,
+                  "end": 90.68,
+                  "confidence": 0.88190335
+                },
+                {
+                  "word": "fuck",
+                  "start": 90.68,
+                  "end": 90.920006,
+                  "confidence": 0.98963064
+                },
+                {
+                  "word": "do",
+                  "start": 90.920006,
+                  "end": 91.08,
+                  "confidence": 0.79770184
+                },
+                {
+                  "word": "you",
+                  "start": 91.08,
+                  "end": 91.240005,
+                  "confidence": 0.85507035
+                },
+                {
+                  "word": "feel",
+                  "start": 91.240005,
+                  "end": 91.72,
+                  "confidence": 0.930568
+                },
+                {
+                  "word": "what",
+                  "start": 91.8,
+                  "end": 92.200005,
+                  "confidence": 0.9893685
+                },
+                {
+                  "word": "an",
+                  "start": 92.200005,
+                  "end": 92.520004,
+                  "confidence": 0.9644818
+                },
+                {
+                  "word": "inspiration",
+                  "start": 92.520004,
+                  "end": 93.240005,
+                  "confidence": 0.96929765
+                },
+                {
+                  "word": "put",
+                  "start": 93.240005,
+                  "end": 93.4,
+                  "confidence": 0.9281522
+                },
+                {
+                  "word": "it",
+                  "start": 93.4,
+                  "end": 93.48,
+                  "confidence": 0.40803263
+                },
+                {
+                  "word": "under",
+                  "start": 93.48,
+                  "end": 93.64,
+                  "confidence": 0.9805392
+                },
+                {
+                  "word": "the",
+                  "start": 93.64,
+                  "end": 93.8,
+                  "confidence": 0.9934471
+                },
+                {
+                  "word": "handle",
+                  "start": 93.8,
+                  "end": 94.44,
+                  "confidence": 0.8908739
+                },
+                {
+                  "word": "press",
+                  "start": 94.76,
+                  "end": 95.08,
+                  "confidence": 0.9855877
+                },
+                {
+                  "word": "that",
+                  "start": 95.08,
+                  "end": 95.32,
+                  "confidence": 0.9982041
+                },
+                {
+                  "word": "in",
+                  "start": 95.32,
+                  "end": 95.880005,
+                  "confidence": 0.9987323
+                },
+                {
+                  "word": "okay",
+                  "start": 95.880005,
+                  "end": 96.12,
+                  "confidence": 0.9726895
+                },
+                {
+                  "word": "now",
+                  "start": 98.265,
+                  "end": 98.585,
+                  "confidence": 0.8976136
+                },
+                {
+                  "word": "on",
+                  "start": 98.585,
+                  "end": 98.985,
+                  "confidence": 0.7997515
+                },
+                {
+                  "word": "open",
+                  "start": 98.985,
+                  "end": 99.385,
+                  "confidence": 0.9988852
+                },
+                {
+                  "word": "the",
+                  "start": 99.385,
+                  "end": 99.625,
+                  "confidence": 0.9993482
+                },
+                {
+                  "word": "fucking",
+                  "start": 99.625,
+                  "end": 99.945,
+                  "confidence": 0.99854624
+                },
+                {
+                  "word": "door",
+                  "start": 99.945,
+                  "end": 100.585,
+                  "confidence": 0.9978876
+                },
+                {
+                  "word": "that",
+                  "start": 102.025,
+                  "end": 102.825005,
+                  "confidence": 0.9848269
+                },
+                {
+                  "word": "is",
+                  "start": 102.905,
+                  "end": 103.145004,
+                  "confidence": 0.99950385
+                },
+                {
+                  "word": "a",
+                  "start": 103.145004,
+                  "end": 103.305,
+                  "confidence": 0.9801199
+                },
+                {
+                  "word": "stupid",
+                  "start": 103.305,
+                  "end": 103.705,
+                  "confidence": 0.9999486
+                },
+                {
+                  "word": "design",
+                  "start": 103.705,
+                  "end": 104.425,
+                  "confidence": 0.99920905
+                },
+                {
+                  "word": "i",
+                  "start": 104.665,
+                  "end": 104.905,
+                  "confidence": 0.5652377
+                },
+                {
+                  "word": "know",
+                  "start": 104.985,
+                  "end": 105.145004,
+                  "confidence": 0.96664953
+                },
+                {
+                  "word": "there's",
+                  "start": 105.145004,
+                  "end": 105.385,
+                  "confidence": 0.8923738
+                },
+                {
+                  "word": "not",
+                  "start": 105.385,
+                  "end": 105.545,
+                  "confidence": 0.99877745
+                },
+                {
+                  "word": "too",
+                  "start": 105.545,
+                  "end": 105.625,
+                  "confidence": 0.99810517
+                },
+                {
+                  "word": "many",
+                  "start": 105.625,
+                  "end": 105.785,
+                  "confidence": 0.9998317
+                },
+                {
+                  "word": "girls",
+                  "start": 105.785,
+                  "end": 106.025,
+                  "confidence": 0.9984401
+                },
+                {
+                  "word": "that",
+                  "start": 106.025,
+                  "end": 106.185,
+                  "confidence": 0.53451496
+                },
+                {
+                  "word": "are",
+                  "start": 106.185,
+                  "end": 106.345,
+                  "confidence": 0.9758774
+                },
+                {
+                  "word": "this",
+                  "start": 106.345,
+                  "end": 106.905,
+                  "confidence": 0.9818318
+                },
+                {
+                  "word": "beautiful",
+                  "start": 106.905,
+                  "end": 107.305,
+                  "confidence": 0.9993156
+                },
+                {
+                  "word": "and",
+                  "start": 107.305,
+                  "end": 107.545,
+                  "confidence": 0.8296752
+                },
+                {
+                  "word": "sexy",
+                  "start": 107.545,
+                  "end": 108.105,
+                  "confidence": 0.99903476
+                },
+                {
+                  "word": "and",
+                  "start": 108.105,
+                  "end": 108.345,
+                  "confidence": 0.9924406
+                },
+                {
+                  "word": "funny",
+                  "start": 108.345,
+                  "end": 108.905,
+                  "confidence": 0.9997949
+                },
+                {
+                  "word": "and",
+                  "start": 108.905,
+                  "end": 109.625,
+                  "confidence": 0.5014609
+                },
+                {
+                  "word": "yeah",
+                  "start": 109.625,
+                  "end": 109.945,
+                  "confidence": 0.8742391
+                },
+                {
+                  "word": "the",
+                  "start": 109.945,
+                  "end": 110.185,
+                  "confidence": 0.9946181
+                },
+                {
+                  "word": "whole",
+                  "start": 110.185,
+                  "end": 110.425,
+                  "confidence": 0.999746
+                },
+                {
+                  "word": "deal",
+                  "start": 110.425,
+                  "end": 110.665,
+                  "confidence": 0.99869007
+                },
+                {
+                  "word": "yes",
+                  "start": 110.990005,
+                  "end": 111.87,
+                  "confidence": 0.9195901
+                },
+                {
+                  "word": "but",
+                  "start": 111.87,
+                  "end": 112.03001,
+                  "confidence": 0.99692035
+                },
+                {
+                  "word": "cameron",
+                  "start": 112.03001,
+                  "end": 112.43,
+                  "confidence": 0.9759113
+                },
+                {
+                  "word": "diaz",
+                  "start": 112.43,
+                  "end": 113.23,
+                  "confidence": 0.79945004
+                },
+                {
+                  "word": "fuck",
+                  "start": 113.55,
+                  "end": 114.83,
+                  "confidence": 0.98321784
+                },
+                {
+                  "word": "i",
+                  "start": 116.03001,
+                  "end": 116.590004,
+                  "confidence": 0.99279904
+                },
+                {
+                  "word": "want",
+                  "start": 116.590004,
+                  "end": 117.15,
+                  "confidence": 0.97781277
+                },
+                {
+                  "word": "a",
+                  "start": 117.15,
+                  "end": 117.79,
+                  "confidence": 0.99236864
+                },
+                {
+                  "word": "fucking",
+                  "start": 117.79,
+                  "end": 118.43,
+                  "confidence": 0.9980349
+                },
+                {
+                  "word": "car",
+                  "start": 118.43,
+                  "end": 119.310005,
+                  "confidence": 0.9991013
+                },
+                {
+                  "word": "right",
+                  "start": 119.87,
+                  "end": 120.590004,
+                  "confidence": 0.955868
+                },
+                {
+                  "word": "fucking",
+                  "start": 120.75,
+                  "end": 121.630005,
+                  "confidence": 0.9600605
+                },
+                {
+                  "word": "now",
+                  "start": 121.79,
+                  "end": 122.270004,
+                  "confidence": 0.98839843
+                },
+                {
+                  "word": "i'm",
+                  "start": 122.270004,
+                  "end": 122.350006,
+                  "confidence": 0.49890113
+                },
+                {
+                  "word": "a",
+                  "start": 122.350006,
+                  "end": 122.670006,
+                  "confidence": 0.85973805
+                },
+                {
+                  "word": "living",
+                  "start": 122.670006,
+                  "end": 122.91,
+                  "confidence": 0.99773514
+                },
+                {
+                  "word": "organism",
+                  "start": 122.91,
+                  "end": 123.55,
+                  "confidence": 0.9798119
+                },
+                {
+                  "word": "nothing",
+                  "start": 123.55,
+                  "end": 123.87,
+                  "confidence": 0.9994307
+                },
+                {
+                  "word": "dead",
+                  "start": 123.87,
+                  "end": 124.11,
+                  "confidence": 0.9991387
+                },
+                {
+                  "word": "will",
+                  "start": 124.11,
+                  "end": 124.350006,
+                  "confidence": 0.99912614
+                },
+                {
+                  "word": "go",
+                  "start": 124.350006,
+                  "end": 124.51,
+                  "confidence": 0.999014
+                },
+                {
+                  "word": "i",
+                  "start": 124.905,
+                  "end": 125.545,
+                  "confidence": 0.68540716
+                },
+                {
+                  "word": "didn't",
+                  "start": 125.865,
+                  "end": 126.185,
+                  "confidence": 0.9948262
+                },
+                {
+                  "word": "build",
+                  "start": 126.185,
+                  "end": 126.505,
+                  "confidence": 0.9972881
+                },
+                {
+                  "word": "a",
+                  "start": 126.505,
+                  "end": 126.744995,
+                  "confidence": 0.92865443
+                },
+                {
+                  "word": "fucking",
+                  "start": 126.744995,
+                  "end": 127.065,
+                  "confidence": 0.9969843
+                },
+                {
+                  "word": "thing",
+                  "start": 127.065,
+                  "end": 127.545,
+                  "confidence": 0.9811851
+                },
+                {
+                  "word": "okay",
+                  "start": 127.545,
+                  "end": 128.025,
+                  "confidence": 0.89754283
+                },
+                {
+                  "word": "okay",
+                  "start": 128.025,
+                  "end": 128.425,
+                  "confidence": 0.9013927
+                },
+                {
+                  "word": "family",
+                  "start": 128.425,
+                  "end": 129.225,
+                  "confidence": 0.873765
+                },
+                {
+                  "word": "fuck",
+                  "start": 130.745,
+                  "end": 131.305,
+                  "confidence": 0.69155407
+                },
+                {
+                  "word": "he's",
+                  "start": 139.42,
+                  "end": 139.81999,
+                  "confidence": 0.9940969
+                },
+                {
+                  "word": "racing",
+                  "start": 139.81999,
+                  "end": 140.06,
+                  "confidence": 0.99856704
+                },
+                {
+                  "word": "back",
+                  "start": 140.06,
+                  "end": 140.22,
+                  "confidence": 0.9996866
+                },
+                {
+                  "word": "to",
+                  "start": 140.22,
+                  "end": 140.29999,
+                  "confidence": 0.9990711
+                },
+                {
+                  "word": "new",
+                  "start": 140.29999,
+                  "end": 140.45999,
+                  "confidence": 0.9982304
+                },
+                {
+                  "word": "york",
+                  "start": 140.45999,
+                  "end": 140.7,
+                  "confidence": 0.9901774
+                },
+                {
+                  "word": "he",
+                  "start": 140.7,
+                  "end": 140.78,
+                  "confidence": 0.9993813
+                },
+                {
+                  "word": "just",
+                  "start": 140.78,
+                  "end": 140.86,
+                  "confidence": 0.99874604
+                },
+                {
+                  "word": "came",
+                  "start": 140.86,
+                  "end": 141.01999,
+                  "confidence": 0.99966276
+                },
+                {
+                  "word": "in",
+                  "start": 141.01999,
+                  "end": 141.18,
+                  "confidence": 0.9986786
+                },
+                {
+                  "word": "for",
+                  "start": 141.18,
+                  "end": 141.34,
+                  "confidence": 0.9988392
+                },
+                {
+                  "word": "a",
+                  "start": 141.34,
+                  "end": 141.42,
+                  "confidence": 0.9976058
+                },
+                {
+                  "word": "few",
+                  "start": 141.42,
+                  "end": 141.58,
+                  "confidence": 0.9999361
+                },
+                {
+                  "word": "hours",
+                  "start": 141.58,
+                  "end": 141.81999,
+                  "confidence": 0.9997856
+                },
+                {
+                  "word": "to",
+                  "start": 141.81999,
+                  "end": 142.14,
+                  "confidence": 0.99767655
+                },
+                {
+                  "word": "to",
+                  "start": 142.14,
+                  "end": 143.66,
+                  "confidence": 0.5358499
+                },
+                {
+                  "word": "fuck",
+                  "start": 144.29999,
+                  "end": 144.7,
+                  "confidence": 0.90332586
+                },
+                {
+                  "word": "me",
+                  "start": 144.7,
+                  "end": 145.26,
+                  "confidence": 0.9991397
+                },
+                {
+                  "word": "takes",
+                  "start": 150.06,
+                  "end": 150.54,
+                  "confidence": 0.9298148
+                },
+                {
+                  "word": "a",
+                  "start": 150.54,
+                  "end": 150.7,
+                  "confidence": 0.99911565
+                },
+                {
+                  "word": "few",
+                  "start": 150.7,
+                  "end": 150.86,
+                  "confidence": 0.9999198
+                },
+                {
+                  "word": "hours",
+                  "start": 150.86,
+                  "end": 151.5,
+                  "confidence": 0.99640095
+                },
+                {
+                  "word": "salad",
+                  "start": 152.7,
+                  "end": 153.18,
+                  "confidence": 0.9785655
+                },
+                {
+                  "word": "please",
+                  "start": 153.185,
+                  "end": 153.825,
+                  "confidence": 0.7866461
+                },
+                {
+                  "word": "baby",
+                  "start": 154.94499,
+                  "end": 155.265,
+                  "confidence": 0.9397502
+                },
+                {
+                  "word": "fuel",
+                  "start": 155.265,
+                  "end": 155.50499,
+                  "confidence": 0.35900435
+                },
+                {
+                  "word": "greens",
+                  "start": 155.50499,
+                  "end": 156.225,
+                  "confidence": 0.71167386
+                },
+                {
+                  "word": "what",
+                  "start": 157.265,
+                  "end": 157.50499,
+                  "confidence": 0.9921715
+                },
+                {
+                  "word": "did",
+                  "start": 157.50499,
+                  "end": 157.745,
+                  "confidence": 0.999102
+                },
+                {
+                  "word": "you",
+                  "start": 157.745,
+                  "end": 157.905,
+                  "confidence": 0.99968755
+                },
+                {
+                  "word": "call",
+                  "start": 157.905,
+                  "end": 158.14499,
+                  "confidence": 0.99965334
+                },
+                {
+                  "word": "me",
+                  "start": 158.14499,
+                  "end": 158.625,
+                  "confidence": 0.99974465
+                },
+                {
+                  "word": "no",
+                  "start": 160.065,
+                  "end": 160.385,
+                  "confidence": 0.6659602
+                },
+                {
+                  "word": "i",
+                  "start": 160.385,
+                  "end": 160.545,
+                  "confidence": 0.9942082
+                },
+                {
+                  "word": "i",
+                  "start": 160.545,
+                  "end": 160.78499,
+                  "confidence": 0.9741822
+                },
+                {
+                  "word": "i",
+                  "start": 160.78499,
+                  "end": 161.105,
+                  "confidence": 0.9621913
+                },
+                {
+                  "word": "i",
+                  "start": 161.105,
+                  "end": 161.345,
+                  "confidence": 0.6302608
+                },
+                {
+                  "word": "didn't",
+                  "start": 161.345,
+                  "end": 161.58499,
+                  "confidence": 0.9880363
+                },
+                {
+                  "word": "call",
+                  "start": 161.58499,
+                  "end": 161.825,
+                  "confidence": 0.99957556
+                },
+                {
+                  "word": "you",
+                  "start": 161.825,
+                  "end": 161.985,
+                  "confidence": 0.99920267
+                },
+                {
+                  "word": "anything",
+                  "start": 161.985,
+                  "end": 162.545,
+                  "confidence": 0.9984088
+                },
+                {
+                  "word": "you",
+                  "start": 162.86499,
+                  "end": 163.185,
+                  "confidence": 0.8470211
+                },
+                {
+                  "word": "want",
+                  "start": 163.185,
+                  "end": 163.42499,
+                  "confidence": 0.9934742
+                },
+                {
+                  "word": "a",
+                  "start": 163.42499,
+                  "end": 163.50499,
+                  "confidence": 0.998973
+                },
+                {
+                  "word": "salad",
+                  "start": 163.50499,
+                  "end": 164.14499,
+                  "confidence": 0.98856115
+                },
+                {
+                  "word": "yeah",
+                  "start": 164.14499,
+                  "end": 164.385,
+                  "confidence": 0.8998275
+                },
+                {
+                  "word": "do",
+                  "start": 164.385,
+                  "end": 164.625,
+                  "confidence": 0.99584144
+                },
+                {
+                  "word": "you",
+                  "start": 164.625,
+                  "end": 164.705,
+                  "confidence": 0.83873576
+                },
+                {
+                  "word": "do",
+                  "start": 164.705,
+                  "end": 164.86499,
+                  "confidence": 0.96319824
+                },
+                {
+                  "word": "you",
+                  "start": 164.86499,
+                  "end": 165.025,
+                  "confidence": 0.9992206
+                },
+                {
+                  "word": "have",
+                  "start": 165.025,
+                  "end": 165.185,
+                  "confidence": 0.9994367
+                },
+                {
+                  "word": "a",
+                  "start": 165.185,
+                  "end": 165.42499,
+                  "confidence": 0.8575504
+                },
+                {
+                  "word": "green",
+                  "start": 165.58499,
+                  "end": 165.905,
+                  "confidence": 0.9987716
+                },
+                {
+                  "word": "salad",
+                  "start": 165.905,
+                  "end": 166.22499,
+                  "confidence": 0.99967325
+                },
+                {
+                  "word": "what",
+                  "start": 166.88,
+                  "end": 167.20001,
+                  "confidence": 0.9995814
+                },
+                {
+                  "word": "the",
+                  "start": 167.20001,
+                  "end": 167.36,
+                  "confidence": 0.9993987
+                },
+                {
+                  "word": "fuck",
+                  "start": 167.36,
+                  "end": 167.52,
+                  "confidence": 0.9993325
+                },
+                {
+                  "word": "color",
+                  "start": 167.52,
+                  "end": 167.84001,
+                  "confidence": 0.9982237
+                },
+                {
+                  "word": "would",
+                  "start": 167.84001,
+                  "end": 168,
+                  "confidence": 0.99955493
+                },
+                {
+                  "word": "it",
+                  "start": 168,
+                  "end": 168.16,
+                  "confidence": 0.99913836
+                },
+                {
+                  "word": "be",
+                  "start": 168.16,
+                  "end": 168.64001,
+                  "confidence": 0.99822295
+                },
+                {
+                  "word": "i'm",
+                  "start": 169.76001,
+                  "end": 170.16,
+                  "confidence": 0.99799144
+                },
+                {
+                  "word": "bruce",
+                  "start": 170.16,
+                  "end": 170.40001,
+                  "confidence": 0.9988914
+                },
+                {
+                  "word": "nolan",
+                  "start": 170.40001,
+                  "end": 170.8,
+                  "confidence": 0.9959486
+                },
+                {
+                  "word": "for",
+                  "start": 170.8,
+                  "end": 171.04001,
+                  "confidence": 0.9913402
+                },
+                {
+                  "word": "eyewitness",
+                  "start": 171.04001,
+                  "end": 171.52,
+                  "confidence": 0.8839545
+                },
+                {
+                  "word": "news",
+                  "start": 171.52,
+                  "end": 172.08,
+                  "confidence": 0.97198594
+                },
+                {
+                  "word": "back",
+                  "start": 172.08,
+                  "end": 172.32,
+                  "confidence": 0.99917775
+                },
+                {
+                  "word": "to",
+                  "start": 172.32,
+                  "end": 172.48001,
+                  "confidence": 0.99896884
+                },
+                {
+                  "word": "you",
+                  "start": 172.48001,
+                  "end": 173.04001,
+                  "confidence": 0.9603188
+                },
+                {
+                  "word": "fuckers",
+                  "start": 173.20001,
+                  "end": 173.76001,
+                  "confidence": 0.998089
+                },
+                {
+                  "word": "fuck",
+                  "start": 183.555,
+                  "end": 183.875,
+                  "confidence": 0.57425714
+                },
+                {
+                  "word": "me",
+                  "start": 183.875,
+                  "end": 184.275,
+                  "confidence": 0.8175306
+                },
+                {
+                  "word": "glad",
+                  "start": 184.275,
+                  "end": 184.755,
+                  "confidence": 0.32353884
+                },
+                {
+                  "word": "it",
+                  "start": 184.755,
+                  "end": 185.235,
+                  "confidence": 0.80928695
+                },
+                {
+                  "word": "don't",
+                  "start": 185.395,
+                  "end": 186.11499,
+                  "confidence": 0.991858
+                },
+                {
+                  "word": "fuck",
+                  "start": 186.11499,
+                  "end": 187.395,
+                  "confidence": 0.86551225
+                },
+                {
+                  "word": "with",
+                  "start": 187.395,
+                  "end": 187.715,
+                  "confidence": 0.9983352
+                },
+                {
+                  "word": "the",
+                  "start": 187.715,
+                  "end": 187.795,
+                  "confidence": 0.9957962
+                },
+                {
+                  "word": "lords",
+                  "start": 187.795,
+                  "end": 188.19499,
+                  "confidence": 0.91533804
+                },
+                {
+                  "word": "of",
+                  "start": 188.19499,
+                  "end": 188.355,
+                  "confidence": 0.9880724
+                },
+                {
+                  "word": "hell",
+                  "start": 188.355,
+                  "end": 188.755,
+                  "confidence": 0.9286307
+                },
+                {
+                  "word": "yes",
+                  "start": 188.755,
+                  "end": 189.315,
+                  "confidence": 0.58266103
+                },
+                {
+                  "word": "don't",
+                  "start": 190.275,
+                  "end": 192.035,
+                  "confidence": 0.64759445
+                },
+                {
+                  "word": "fuck",
+                  "start": 192.035,
+                  "end": 192.675,
+                  "confidence": 0.9981305
+                },
+                {
+                  "word": "with",
+                  "start": 192.45,
+                  "end": 192.69,
+                  "confidence": 0.99607146
+                },
+                {
+                  "word": "the",
+                  "start": 192.69,
+                  "end": 192.84999,
+                  "confidence": 0.99578226
+                },
+                {
+                  "word": "babysitter",
+                  "start": 192.84999,
+                  "end": 193.41,
+                  "confidence": 0.9850733
+                },
+                {
+                  "word": "fucking",
+                  "start": 217.095,
+                  "end": 217.735,
+                  "confidence": 0.16571984
+                },
+                {
+                  "word": "joking",
+                  "start": 217.735,
+                  "end": 218.13501,
+                  "confidence": 0.6264264
+                },
+                {
+                  "word": "what",
+                  "start": 225.40001,
+                  "end": 225.64,
+                  "confidence": 0.8371551
+                },
+                {
+                  "word": "the",
+                  "start": 225.64,
+                  "end": 225.88,
+                  "confidence": 0.9948133
+                },
+                {
+                  "word": "fuck",
+                  "start": 225.88,
+                  "end": 226.12001,
+                  "confidence": 0.9885343
+                },
+                {
+                  "word": "was",
+                  "start": 226.12001,
+                  "end": 226.44,
+                  "confidence": 0.98911464
+                },
+                {
+                  "word": "that",
+                  "start": 226.44,
+                  "end": 226.92001,
+                  "confidence": 0.9216696
+                },
+                {
+                  "word": "what",
+                  "start": 226.92001,
+                  "end": 227.16,
+                  "confidence": 0.98526925
+                },
+                {
+                  "word": "the",
+                  "start": 227.16,
+                  "end": 227.32,
+                  "confidence": 0.9950771
+                },
+                {
+                  "word": "hell",
+                  "start": 227.32,
+                  "end": 227.56001,
+                  "confidence": 0.96398413
+                },
+                {
+                  "word": "i",
+                  "start": 227.56001,
+                  "end": 227.72,
+                  "confidence": 0.99874336
+                },
+                {
+                  "word": "have",
+                  "start": 227.72,
+                  "end": 227.88,
+                  "confidence": 0.9691496
+                },
+                {
+                  "word": "been",
+                  "start": 227.88,
+                  "end": 228.04001,
+                  "confidence": 0.99898356
+                },
+                {
+                  "word": "worried",
+                  "start": 228.04001,
+                  "end": 228.36,
+                  "confidence": 0.9990877
+                },
+                {
+                  "word": "sick",
+                  "start": 228.36,
+                  "end": 229.08002,
+                  "confidence": 0.995857
+                },
+                {
+                  "word": "relax",
+                  "start": 229.40001,
+                  "end": 230.04001,
+                  "confidence": 0.9673987
+                },
+                {
+                  "word": "honey",
+                  "start": 230.04001,
+                  "end": 230.6,
+                  "confidence": 0.9841675
+                },
+                {
+                  "word": "i",
+                  "start": 230.6,
+                  "end": 230.84001,
+                  "confidence": 0.9993789
+                },
+                {
+                  "word": "just",
+                  "start": 230.84001,
+                  "end": 231,
+                  "confidence": 0.9993635
+                },
+                {
+                  "word": "took",
+                  "start": 231,
+                  "end": 231.24,
+                  "confidence": 0.9989078
+                },
+                {
+                  "word": "him",
+                  "start": 231.24,
+                  "end": 231.32,
+                  "confidence": 0.78616095
+                },
+                {
+                  "word": "to",
+                  "start": 231.32,
+                  "end": 231.48001,
+                  "confidence": 0.9986755
+                },
+                {
+                  "word": "the",
+                  "start": 231.48001,
+                  "end": 231.64,
+                  "confidence": 0.9991073
+                },
+                {
+                  "word": "mall",
+                  "start": 231.64,
+                  "end": 231.88,
+                  "confidence": 0.99972504
+                },
+                {
+                  "word": "to",
+                  "start": 231.88,
+                  "end": 232.04001,
+                  "confidence": 0.99852717
+                },
+                {
+                  "word": "hang",
+                  "start": 232.04001,
+                  "end": 232.28,
+                  "confidence": 0.9994634
+                },
+                {
+                  "word": "out",
+                  "start": 232.28,
+                  "end": 232.6,
+                  "confidence": 0.97254163
+                },
+                {
+                  "word": "the",
+                  "start": 232.6,
+                  "end": 232.76001,
+                  "confidence": 0.99954754
+                },
+                {
+                  "word": "mall",
+                  "start": 232.76001,
+                  "end": 232.92001,
+                  "confidence": 0.9994887
+                },
+                {
+                  "word": "closes",
+                  "start": 232.92001,
+                  "end": 233.32,
+                  "confidence": 0.99936503
+                },
+                {
+                  "word": "at",
+                  "start": 233.32,
+                  "end": 233.56001,
+                  "confidence": 0.9996277
+                },
+                {
+                  "word": "nine",
+                  "start": 233.56001,
+                  "end": 233.96,
+                  "confidence": 0.967119
+                },
+                {
+                  "word": "it's",
+                  "start": 233.96,
+                  "end": 234.20001,
+                  "confidence": 0.99927974
+                },
+                {
+                  "word": "twelve",
+                  "start": 234.20001,
+                  "end": 234.52,
+                  "confidence": 0.9996246
+                },
+                {
+                  "word": "o'clock",
+                  "start": 234.52,
+                  "end": 235,
+                  "confidence": 0.99952763
+                },
+                {
+                  "word": "you",
+                  "start": 235.67499,
+                  "end": 235.995,
+                  "confidence": 0.9923321
+                },
+                {
+                  "word": "stopped",
+                  "start": 235.995,
+                  "end": 236.31499,
+                  "confidence": 0.79085416
+                },
+                {
+                  "word": "off",
+                  "start": 236.31499,
+                  "end": 236.47499,
+                  "confidence": 0.97768277
+                },
+                {
+                  "word": "for",
+                  "start": 236.47499,
+                  "end": 236.635,
+                  "confidence": 0.9986197
+                },
+                {
+                  "word": "ice",
+                  "start": 236.635,
+                  "end": 236.875,
+                  "confidence": 0.99956924
+                },
+                {
+                  "word": "cream",
+                  "start": 236.875,
+                  "end": 237.435,
+                  "confidence": 0.9762212
+                },
+                {
+                  "word": "when",
+                  "start": 237.515,
+                  "end": 237.83499,
+                  "confidence": 0.99779797
+                },
+                {
+                  "word": "the",
+                  "start": 237.83499,
+                  "end": 237.995,
+                  "confidence": 0.99793136
+                },
+                {
+                  "word": "fuck",
+                  "start": 237.995,
+                  "end": 238.155,
+                  "confidence": 0.99851865
+                },
+                {
+                  "word": "did",
+                  "start": 238.155,
+                  "end": 238.39499,
+                  "confidence": 0.78259504
+                },
+                {
+                  "word": "we",
+                  "start": 238.39499,
+                  "end": 238.555,
+                  "confidence": 0.99976224
+                },
+                {
+                  "word": "get",
+                  "start": 238.555,
+                  "end": 238.715,
+                  "confidence": 0.99926394
+                },
+                {
+                  "word": "ice",
+                  "start": 238.715,
+                  "end": 238.95499,
+                  "confidence": 0.99867404
+                },
+                {
+                  "word": "cream",
+                  "start": 238.95499,
+                  "end": 239.515,
+                  "confidence": 0.9952761
+                },
+                {
+                  "word": "excuse",
+                  "start": 240.155,
+                  "end": 240.39499,
+                  "confidence": 0.99802834
+                },
+                {
+                  "word": "me",
+                  "start": 240.39499,
+                  "end": 240.635,
+                  "confidence": 0.92208815
+                },
+                {
+                  "word": "i'm",
+                  "start": 240.635,
+                  "end": 240.875,
+                  "confidence": 0.99826276
+                },
+                {
+                  "word": "eric",
+                  "start": 240.875,
+                  "end": 241.03499,
+                  "confidence": 0.9324082
+                },
+                {
+                  "word": "lentcher",
+                  "start": 241.03499,
+                  "end": 241.595,
+                  "confidence": 0.82769597
+                },
+                {
+                  "word": "james",
+                  "start": 241.595,
+                  "end": 241.83499,
+                  "confidence": 0.11310567
+                },
+                {
+                  "word": "xavier",
+                  "start": 241.83499,
+                  "end": 242.31499,
+                  "confidence": 0.7285836
+                },
+                {
+                  "word": "don't",
+                  "start": 242.31499,
+                  "end": 242.555,
+                  "confidence": 0.8308579
+                },
+                {
+                  "word": "fuck",
+                  "start": 242.555,
+                  "end": 242.795,
+                  "confidence": 0.99879396
+                },
+                {
+                  "word": "yourself",
+                  "start": 242.795,
+                  "end": 243.11499,
+                  "confidence": 0.99891543
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "error": null
+}
