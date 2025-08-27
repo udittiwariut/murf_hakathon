@@ -1,8 +1,8 @@
 import child_process from "child_process";
 import fs from "fs";
 import path from "path";
-import { CURSE_WORDS } from "./conts.js";
 import { createClient } from "@deepgram/sdk";
+import { CURSE_WORDS } from "./conts.js";
 
 export async function extractAudio(videoFile) {
   return new Promise((resolve, reject) => {
@@ -10,9 +10,9 @@ export async function extractAudio(videoFile) {
 
     const ffmpeg = child_process.spawn("ffmpeg", ["-i", videoFile, "-vn", "-y", fileName]);
 
-    ffmpeg.stdin.on("error", (err) => {
-      console.error("stdin error:", err.message);
-    });
+    // ffmpeg.stdin.on("error", (err) => {
+    //   console.error("stdin error:", err.message);
+    // });
 
     // ffmpeg.stderr.on("data", (data) => {
     //   console.error("ffmpeg stderr:", data.toString());
@@ -90,57 +90,53 @@ export async function transcribe(audioFile) {
   }
 }
 
-export function findBadSegments(segments) {
-  return segments.filter((seg) => CURSE_WORDS.some((w) => seg.word.toLowerCase().includes(w)));
+export function findBadSegments(segments, words) {
+  return segments.filter((seg) => words.some((w) => seg.word.toLowerCase().includes(w)));
 }
 export function replaceAudio(videoFile, censored_audio, audioFile) {
-  const ffmpeg = child_process.spawn("ffmpeg", [
-    "-i",
-    videoFile,
-    "-i",
-    censored_audio,
-    "-c:v",
-    "copy",
-    "-map",
-    "0:v:0",
-    "-map",
-    "1:a:0",
-    "-shortest",
-    "-movflags",
-    "frag_keyframe+empty_moov+default_base_moof",
-    "-f",
-    "mp4",
-    "pipe:1",
-  ]);
+  return new Promise((resolve, reject) => {
+    const fileName = `${Date.now()}.mp4`;
+    const filePath = path.resolve(__dirname, "temp", fileName);
 
-  ffmpeg.stdin.on("error", (err) => {
-    console.error("stdin error:", err.message);
+    const ffmpeg = child_process.spawn("ffmpeg", [
+      "-i",
+      videoFile,
+      "-i",
+      censored_audio,
+      "-c:v",
+      "copy",
+      "-map",
+      "0:v:0",
+      "-map",
+      "1:a:0",
+      "-shortest",
+      "-f",
+      "mp4",
+      filePath,
+    ]);
+
+    ffmpeg.stdin.on("error", (err) => {
+      console.error("stdin error:", err.message);
+    });
+
+    ffmpeg.on("close", (code) => {
+      fs.unlinkSync(audioFile);
+      fs.unlinkSync(censored_audio);
+      fs.unlinkSync(videoFile);
+      if (code == 0) resolve(fileName);
+      reject("Unable to process the video");
+    });
   });
-
-  // ffmpeg.stderr.on("data", (data) => {
-  //   console.error("ffmpeg stderr:", data.toString());
-  // });
-
-  ffmpeg.on("close", (code) => {
-    fs.unlinkSync(audioFile);
-    fs.unlinkSync(censored_audio);
-
-    fs.unlinkSync(videoFile);
-  });
-
-  return ffmpeg.stdout;
 }
 
-export const pipeLine = async ({ videoFile, res }) => {
+export const pipeLine = async ({ videoFile, words_to_censor = CURSE_WORDS }) => {
   const audioFile = await extractAudio(videoFile);
 
   const audio_response = await transcribe(audioFile);
 
-  const badSegments = findBadSegments(audio_response);
+  const badSegments = findBadSegments(audio_response, words_to_censor);
 
   const censored_audio = await addBeeps(audioFile, badSegments);
 
-  const finalVideo = replaceAudio(videoFile, censored_audio, audioFile);
-  res.setHeader("Content-Type", "video/mp4");
-  finalVideo.pipe(res);
+  return replaceAudio(videoFile, censored_audio, audioFile);
 };

@@ -3,6 +3,7 @@ import fs from "fs";
 import express from "express";
 import { pipeLine } from "./helper.js";
 import { fileURLToPath } from "url";
+import cors from "cors";
 import path, { dirname } from "path";
 import Busboy from "busboy";
 import { getFileExtension } from "./conts.js";
@@ -12,6 +13,8 @@ global.__dirname = dirname(__filename);
 
 const app = express();
 
+app.use(cors());
+app.use(express.json());
 app.post("/censor", async (req, res) => {
   try {
     const busboy = Busboy({ headers: req.headers });
@@ -26,22 +29,39 @@ app.post("/censor", async (req, res) => {
       file.pipe(writeStream);
     });
 
+    let formData = {};
+
+    busboy.on("field", (fieldname, val, fieldnameTruncated, valTruncated, encoding, mimetype) => {
+      formData = { ...formData, [fieldname]: JSON.parse(val) };
+    });
+
     busboy.on("finish", async () => {
-      await pipeLine({ videoFile: tempVideoFile, res });
+      const filename = await pipeLine({ videoFile: tempVideoFile, words_to_censor: formData.words_to_censor });
+
+      return res.status(200).json({ fileName: filename });
     });
 
     return req.pipe(busboy);
-  } catch {
+  } catch (error) {
     console.error(error);
     res.status(500).send("Error processing video");
   }
 });
 
-app.get("/del", async (req, res) => {
-  fs.unlink(tempVideoFile, (err) => {
-    if (err) console.log(err);
-    else console.log("removed");
-  });
+app.get("/stream/:video", (req, res) => {
+  const fileName = req.params.video;
+  const filePath = path.resolve(__dirname, "temp", fileName);
+
+  if (fs.existsSync(filePath)) {
+    res.writeHead(200, { "Content-Type": "video/mp4" });
+    const stream = fs.createReadStream(filePath);
+    stream.pipe(res);
+    res.on("finish", () => {
+      setTimeout(() => {
+        fs.unlinkSync(filePath);
+      }, 500);
+    });
+  }
 });
 
 app.listen(8080, () => {
