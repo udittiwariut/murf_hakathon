@@ -64,7 +64,6 @@ app.get("/stream/:video", async (req, res) => {
       res.on("finish", () => {
         setTimeout(() => {
           fs.unlinkSync(filePath);
-          return res.send("ok")
         }, 500);
       });
     }
