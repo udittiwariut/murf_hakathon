@@ -64,6 +64,6 @@ app.get("/stream/:video", (req, res) => {
   }
 });
 
-app.listen(8080, () => {
-  console.log(`App listing on port 8080`);
+app.listen(process.env.PORT, () => {
+  console.log(`App listing on port ${process.env.PORT}`);
 });
