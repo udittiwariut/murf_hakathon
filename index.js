@@ -13,6 +13,8 @@ global.__dirname = dirname(__filename);
 
 const app = express();
 
+const cleanupTimers = {};
+
 app.use(cors());
 app.use(express.json());
 app.post("/censor", async (req, res) => {
@@ -60,7 +62,6 @@ app.get("/stream/:video", (req, res) => {
 
     const range = req.headers.range;
     if (!range) {
-      // Client didn't ask for partial content, send full file
       res.writeHead(200, {
         "Content-Length": stats.size,
         "Content-Type": "video/mp4",
@@ -69,8 +70,7 @@ app.get("/stream/:video", (req, res) => {
       return;
     }
 
-    // Parse Range header
-    const CHUNK_SIZE = 1 * 1e6; // 1MB chunks
+    const CHUNK_SIZE = 1 * 1e6;
     const start = Number(range.replace(/\D/g, ""));
     const end = Math.min(start + CHUNK_SIZE, stats.size - 1);
 
@@ -83,15 +83,20 @@ app.get("/stream/:video", (req, res) => {
     });
 
     fs.createReadStream(filePath, { start, end }).pipe(res);
-  });
 
-  // Cleanup after stream finishes
-  res.on("finish", () => {
-    setTimeout(() => {
-      fs.rm(filePath, { force: true }, (err) => {
-        if (err) console.error("Error removing file:", err);
-      });
-    }, 500);
+    res.on("finish", () => {
+      if (cleanupTimers[filePath]) {
+        clearTimeout(cleanupTimers[filePath]);
+      }
+      cleanupTimers[filePath] = setTimeout(() => {
+        fs.unlink(filePath, (err) => {
+          if (err) console.error("Error deleting file:", err);
+          else console.log("File deleted:", filePath);
+        });
+
+        delete cleanupTimers[filePath];
+      }, 60 * 1000);
+    });
   });
 });
 

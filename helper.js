@@ -71,20 +71,23 @@ export async function transcribe(audioFile) {
   try {
     const deepgram = createClient(process.env.DEEPGRAM_API_KEY);
 
-    // const res = await deepgram.listen.prerecorded.transcribeFile(fileStream, {
-    //   model: "nova-3",
-    //   language: "en",
-    // });
+    const res = await deepgram.listen.prerecorded.transcribeFile(fs.createReadStream(audioFile), {
+      model: "nova-3",
+      language: "en",
+    });
+
+    let word = res.result.results.channels[0].alternatives[0].words;
+
+    return word;
+
+    // From Local File
     // const jsonData = JSON.stringify(word, null, 2);
 
-    const res = fs.readFileSync("response.json", { encoding: "utf8" });
-
-    // let word = res.result.results.channels[0].alternatives[0].words;
+    // const res = fs.readFileSync("response.json", { encoding: "utf8" });
 
     // fs.writeFileSync("", jsonData, "utf8");
 
-    return JSON.parse(res);
-    return word;
+    // return JSON.parse(res);
   } catch (error) {
     console.log(error.response);
   }
