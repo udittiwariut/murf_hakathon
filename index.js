@@ -49,11 +49,11 @@ app.post("/censor", async (req, res) => {
 });
 
 app.get("/stream/:video", async (req, res) => {
+  const fileName = req.params.video;
+
   const filePath = path.resolve(__dirname, "temp", fileName);
 
   try {
-    const fileName = req.params.video;
-
     console.log(filePath, "filepath");
 
     if (fs.existsSync(filePath)) {
@@ -62,14 +62,14 @@ app.get("/stream/:video", async (req, res) => {
       stream.pipe(res);
       res.on("finish", () => {
         setTimeout(() => {
-          fs.rm(filePath, { force: true });
+          fs.rmSync(filePath, { force: true });
         }, 500);
       });
     }
   } catch (error) {
     res.on("finish", () => {
       setTimeout(() => {
-        fs.rm(filePath, { force: true });
+        fs.rmSync(filePath, { force: true });
       }, 500);
     });
     return res.json(error);
