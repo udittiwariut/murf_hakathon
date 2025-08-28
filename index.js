@@ -48,19 +48,28 @@ app.post("/censor", async (req, res) => {
   }
 });
 
-app.get("/stream/:video", (req, res) => {
-  const fileName = req.params.video;
-  const filePath = path.resolve(__dirname, "temp", fileName);
+app.get("/stream/:video", async (req, res) => {
+  try {
+    const fileName = req.params.video;
+    const filePath = path.resolve(__dirname, "temp", fileName);
 
-  if (fs.existsSync(filePath)) {
-    res.writeHead(200, { "Content-Type": "video/mp4" });
-    const stream = fs.createReadStream(filePath);
-    stream.pipe(res);
-    res.on("finish", () => {
-      setTimeout(() => {
-        fs.unlinkSync(filePath);
-      }, 500);
-    });
+    console.log(filePath, "filepath");
+
+    if (fs.existsSync(filePath)) {
+      res.writeHead(200, { "Content-Type": "video/mp4" });
+      const stream = fs.createReadStream(filePath);
+      console.log("can read stream");
+
+      stream.pipe(res);
+      res.on("finish", () => {
+        setTimeout(() => {
+          fs.unlinkSync(filePath);
+          return res.send("ok")
+        }, 500);
+      });
+    }
+  } catch (error) {
+    return res.json(error);
   }
 });
 
