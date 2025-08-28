@@ -48,34 +48,51 @@ app.post("/censor", async (req, res) => {
   }
 });
 
-app.get("/stream/:video", async (req, res) => {
+app.get("/stream/:video", (req, res) => {
   const fileName = req.params.video;
-
   const filePath = path.resolve(__dirname, "temp", fileName);
 
-  try {
-    console.log(filePath, "filepath");
-
-    if (fs.existsSync(filePath)) {
-      res.writeHead(200, { "Content-Type": "video/mp4" });
-      const stream = fs.createReadStream(filePath);
-      stream.pipe(res);
-      console.log(stream);
-
-      res.on("finish", () => {
-        setTimeout(() => {
-          fs.rmSync(filePath, { force: true });
-        }, 500);
-      });
+  fs.stat(filePath, (err, stats) => {
+    if (err) {
+      console.error("File not found:", err);
+      return res.sendStatus(404);
     }
-  } catch (error) {
-    res.on("finish", () => {
-      setTimeout(() => {
-        fs.rmSync(filePath, { force: true });
-      }, 500);
+
+    const range = req.headers.range;
+    if (!range) {
+      // Client didn't ask for partial content, send full file
+      res.writeHead(200, {
+        "Content-Length": stats.size,
+        "Content-Type": "video/mp4",
+      });
+      fs.createReadStream(filePath).pipe(res);
+      return;
+    }
+
+    // Parse Range header
+    const CHUNK_SIZE = 1 * 1e6; // 1MB chunks
+    const start = Number(range.replace(/\D/g, ""));
+    const end = Math.min(start + CHUNK_SIZE, stats.size - 1);
+
+    const contentLength = end - start + 1;
+    res.writeHead(206, {
+      "Content-Range": `bytes ${start}-${end}/${stats.size}`,
+      "Accept-Ranges": "bytes",
+      "Content-Length": contentLength,
+      "Content-Type": "video/mp4",
     });
-    return res.json(error);
-  }
+
+    fs.createReadStream(filePath, { start, end }).pipe(res);
+  });
+
+  // Cleanup after stream finishes
+  res.on("finish", () => {
+    setTimeout(() => {
+      fs.rm(filePath, { force: true }, (err) => {
+        if (err) console.error("Error removing file:", err);
+      });
+    }, 500);
+  });
 });
 
 app.listen(process.env.PORT, () => {
