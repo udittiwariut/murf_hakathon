@@ -60,6 +60,8 @@ app.get("/stream/:video", async (req, res) => {
       res.writeHead(200, { "Content-Type": "video/mp4" });
       const stream = fs.createReadStream(filePath);
       stream.pipe(res);
+      console.log(stream);
+
       res.on("finish", () => {
         setTimeout(() => {
           fs.rmSync(filePath, { force: true });
