@@ -14,12 +14,10 @@
   "dependencies": {
     "@deepgram/sdk": "^4.11.2",
     "axios": "^1.11.0",
-    "bad-words": "^4.0.0",
     "busboy": "^1.6.0",
     "cors": "^2.8.5",
     "dotenv": "^17.2.1",
     "express": "^5.1.0",
-    "form-data": "^4.0.4"
   },
   "devDependencies": {
     "nodemon": "^3.1.10"
