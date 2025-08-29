@@ -4,6 +4,8 @@ import path from "path";
 import { createClient } from "@deepgram/sdk";
 import { CURSE_WORDS } from "./conts.js";
 
+const cache = {};
+
 export async function extractAudio(videoFile) {
   return new Promise((resolve, reject) => {
     const fileName = path.resolve(__dirname, "temp", `${Date.now()}.mp3`);
@@ -67,35 +69,54 @@ export function addBeeps(audioFile, badSegments) {
   });
 }
 
-export async function transcribe(audioFile) {
+export async function transcribe(deepgram, audioFileStream, fileId) {
   try {
-    const deepgram = createClient(process.env.DEEPGRAM_API_KEY);
+    const filePath = path.resolve(__dirname, "temp", `${fileId}.json`);
 
-    const res = await deepgram.listen.prerecorded.transcribeFile(fs.createReadStream(audioFile), {
+    if (Object.hasOwn(cache, fileId)) {
+      clearTimeout(cache[fileId]);
+      cache[fileId] = setTimeout(() => {
+        fs.unlink(filePath, (err) => {
+          if (err) console.error("Error deleting file:", err);
+          else console.log("File deleted:", filePath);
+        });
+        delete cache[fileId];
+      }, 60 * 1000);
+      const res = fs.readFileSync(filePath, { encoding: "utf8" });
+      return JSON.parse(res);
+    }
+
+    const res = await deepgram.listen.prerecorded.transcribeFile(audioFileStream, {
       model: "nova-3",
       language: "en",
     });
 
     let word = res.result.results.channels[0].alternatives[0].words;
 
+    const jsonData = JSON.stringify(word, null, 2);
+
+    cache[fileId] = setTimeout(() => {
+      fs.unlink(filePath, (err) => {
+        if (err) console.error("Error deleting file:", err);
+        else console.log("File deleted:", filePath);
+      });
+      delete cache[fileId];
+    }, 60 * 1000);
+
+    fs.writeFileSync(filePath, jsonData, "utf8");
+
     return word;
-
-    // From Local File
-    // const jsonData = JSON.stringify(word, null, 2);
-
-    // const res = fs.readFileSync("response.json", { encoding: "utf8" });
-
-    // fs.writeFileSync("", jsonData, "utf8");
-
-    // return JSON.parse(res);
   } catch (error) {
-    console.log(error.response);
+    console.error(error);
+
+    return error;
   }
 }
 
 export function findBadSegments(segments, words) {
-  return segments.filter((seg) => words.some((w) => seg.word.toLowerCase().includes(w)));
+  return segments.filter((seg) => Object.hasOwn(words, seg.word.toLowerCase()));
 }
+
 export function replaceAudio(videoFile, censored_audio, audioFile) {
   return new Promise((resolve, reject) => {
     const fileName = `${Date.now()}.mp4`;
@@ -132,14 +153,20 @@ export function replaceAudio(videoFile, censored_audio, audioFile) {
   });
 }
 
-export const pipeLine = async ({ videoFile, words_to_censor = CURSE_WORDS }) => {
-  const audioFile = await extractAudio(videoFile);
+export const pipeLine = async ({ videoFile, words_to_censor = CURSE_WORDS, fileId = undefined }) => {
+  try {
+    const deepgram = createClient(process.env.DEEPGRAM_API_KEY);
 
-  const audio_response = await transcribe(audioFile);
+    const audioFile = await extractAudio(videoFile);
 
-  const badSegments = findBadSegments(audio_response, words_to_censor);
+    const audio_response = await transcribe(deepgram, fs.createReadStream(audioFile), fileId);
 
-  const censored_audio = await addBeeps(audioFile, badSegments);
+    const badSegments = findBadSegments(audio_response, words_to_censor);
 
-  return replaceAudio(videoFile, censored_audio, audioFile);
+    const censored_audio = await addBeeps(audioFile, badSegments);
+
+    return replaceAudio(videoFile, censored_audio, audioFile);
+  } catch (error) {
+    return error;
+  }
 };

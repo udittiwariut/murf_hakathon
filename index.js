@@ -1,12 +1,13 @@
 import "dotenv/config";
 import fs from "fs";
 import express from "express";
-import { pipeLine } from "./helper.js";
+import { pipeLine, transcribe } from "./helper.js";
 import { fileURLToPath } from "url";
 import cors from "cors";
 import path, { dirname } from "path";
 import Busboy from "busboy";
 import { getFileExtension } from "./conts.js";
+import { createClient } from "@deepgram/sdk";
 
 global.__filename = fileURLToPath(import.meta.url);
 global.__dirname = dirname(__filename);
@@ -23,11 +24,12 @@ app.post("/censor", async (req, res) => {
 
     let tempVideoFile;
 
-    busboy.on("file", (fieldname, file, filename) => {
-      tempVideoFile = path.resolve(__dirname, "temp", `${Date.now()}.${getFileExtension(filename.mimeType)}`);
+    let fileId;
+    busboy.on("file", (fieldname, file, fileInfo) => {
+      tempVideoFile = path.resolve(__dirname, "temp", `${Date.now()}.${getFileExtension(fileInfo.mimeType)}`);
 
       const writeStream = fs.createWriteStream(tempVideoFile);
-
+      fileId = fileInfo.filename;
       file.pipe(writeStream);
     });
 
@@ -38,7 +40,11 @@ app.post("/censor", async (req, res) => {
     });
 
     busboy.on("finish", async () => {
-      const filename = await pipeLine({ videoFile: tempVideoFile, words_to_censor: formData.words_to_censor });
+      const filename = await pipeLine({
+        videoFile: tempVideoFile,
+        words_to_censor: formData.words_to_censor,
+        fileId,
+      });
 
       return res.status(200).json({ fileName: filename });
     });
@@ -98,6 +104,47 @@ app.get("/stream/:video", (req, res) => {
       }, 60 * 1000);
     });
   });
+});
+
+app.post("/get-transcript", (req, res) => {
+  try {
+    const busboy = Busboy({ headers: req.headers });
+    const deepgram = createClient(process.env.DEEPGRAM_API_KEY);
+
+    let p = [];
+
+    busboy.on("file", (fieldname, file, fileInfo) => {
+      const chunks = [];
+
+      file.on("data", (data) => {
+        chunks.push(data);
+      });
+
+      file.on("end", () => {
+        try {
+          const buffer = Buffer.concat(chunks);
+          p.push(transcribe(deepgram, buffer, fileInfo.filename));
+        } catch (err) {
+          console.error("Transcription failed:", err);
+          return res.status(500).json({ error: "Transcription failed" });
+        }
+      });
+    });
+
+    busboy.on("close", async () => {
+      try {
+        const results = await Promise.all(p);
+        res.json(results);
+      } catch (error) {
+        res.status(400).json({ error: "No transcript generated" });
+      }
+    });
+
+    return req.pipe(busboy);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Error processing video");
+  }
 });
 
 app.listen(process.env.PORT, () => {
