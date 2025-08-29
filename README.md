@@ -1,4 +1,4 @@
-CensorNow is a smart video editing tool that helps you quickly mute or beep out inappropriate, offensive, or private content from your videos.
+CensorNow is a smart video editing tool that helps you quickly beep out inappropriate, offensive, or private content from your videos.
 
 It works in two modes:
 
