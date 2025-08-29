@@ -148,5 +148,15 @@ app.post("/get-transcript", (req, res) => {
 });
 
 app.listen(process.env.PORT, () => {
+  let tempDir = path.resolve(__dirname, "temp")
+  fs.readdir(tempDir, (err, files) => {
+    if (err) throw err;
+
+    for (const file of files) {
+      fs.unlink(path.join(tempDir, file), (err) => {
+        if (err) throw err;
+      });
+    }
+  });
   console.log(`App listing on port ${process.env.PORT}`);
 });
