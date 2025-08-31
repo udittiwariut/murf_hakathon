@@ -2,9 +2,17 @@ import child_process from "child_process";
 import fs from "fs";
 import path from "path";
 import { createClient } from "@deepgram/sdk";
-import { CURSE_WORDS } from "./conts.js";
+import { PutObjectCommand, S3Client, HeadObjectCommand, GetObjectCommand } from "@aws-sdk/client-s3";
+import { CURSE_WORDS, FOLDER_NAME } from "./conts.js";
 
-const cache = {};
+export const client = new S3Client({
+  region: "ap-south-1",
+  credentials: {
+    accessKeyId: process.env.AWS_ACCESS_KEY,
+    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+    accountId: process.env.AWS_ACCOUNT_ID,
+  },
+});
 
 export async function extractAudio(videoFile) {
   return new Promise((resolve, reject) => {
@@ -73,17 +81,23 @@ export async function transcribe(deepgram, audioFileStream, fileId) {
   try {
     const filePath = path.resolve(__dirname, "temp", `${fileId}.json`);
 
-    if (Object.hasOwn(cache, fileId)) {
-      clearTimeout(cache[fileId]);
-      cache[fileId] = setTimeout(() => {
-        fs.unlink(filePath, (err) => {
-          if (err) console.error("Error deleting file:", err);
-          else console.log("File deleted:", filePath);
-        });
-        delete cache[fileId];
-      }, 60 * 1000);
-      const res = fs.readFileSync(filePath, { encoding: "utf8" });
-      return JSON.parse(res);
+    const fileS3Key = `${FOLDER_NAME.scripts}/${fileId}.json`;
+
+    const isFileExist = await checkIfFileExists(fileS3Key);
+
+    if (isFileExist) {
+      const getFileCMD = new GetObjectCommand({
+        Bucket: process.env.BUCKET_NAME,
+        Key: fileS3Key,
+      });
+      const transcript = await client.send(getFileCMD);
+      const chunks = [];
+      for await (const chunk of transcript.Body) {
+        chunks.push(chunk);
+      }
+      const data = Buffer.concat(chunks).toString("utf-8");
+
+      return JSON.parse(data);
     }
 
     const res = await deepgram.listen.prerecorded.transcribeFile(audioFileStream, {
@@ -95,15 +109,12 @@ export async function transcribe(deepgram, audioFileStream, fileId) {
 
     const jsonData = JSON.stringify(word, null, 2);
 
-    cache[fileId] = setTimeout(() => {
-      fs.unlink(filePath, (err) => {
-        if (err) console.error("Error deleting file:", err);
-        else console.log("File deleted:", filePath);
-      });
-      delete cache[fileId];
-    }, 60 * 1000);
-
-    fs.writeFileSync(filePath, jsonData, "utf8");
+    const putCommand = new PutObjectCommand({
+      Bucket: process.env.BUCKET_NAME,
+      Body: jsonData,
+      Key: fileS3Key,
+    });
+    await client.send(putCommand);
 
     return word;
   } catch (error) {
@@ -143,11 +154,24 @@ export function replaceAudio(videoFile, censored_audio, audioFile) {
       console.error("stdin error:", err.message);
     });
 
-    ffmpeg.on("close", (code) => {
+    ffmpeg.on("close", async (code) => {
       fs.unlinkSync(audioFile);
       fs.unlinkSync(censored_audio);
       fs.unlinkSync(videoFile);
-      if (code == 0) resolve(fileName);
+      if (code == 0) {
+        const awsFileKey = `${FOLDER_NAME.videos}/${fileName}`;
+        const fileContent = fs.readFileSync(filePath);
+        const putCommand = new PutObjectCommand({
+          Bucket: process.env.BUCKET_NAME,
+          Body: fileContent,
+          Key: awsFileKey,
+        });
+        await client.send(putCommand);
+
+        fs.unlinkSync(filePath);
+
+        resolve(fileName);
+      }
       reject("Unable to process the video");
     });
   });
@@ -170,3 +194,20 @@ export const pipeLine = async ({ videoFile, words_to_censor = CURSE_WORDS, fileI
     return error;
   }
 };
+
+async function checkIfFileExists(fileKey) {
+  try {
+    await client.send(
+      new HeadObjectCommand({
+        Bucket: process.env.BUCKET_NAME,
+        Key: fileKey,
+      })
+    );
+    return true;
+  } catch (err) {
+    if (err.name === "NotFound") {
+      return false;
+    }
+    throw err;
+  }
+}

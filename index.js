@@ -1,23 +1,26 @@
 import "dotenv/config";
 import fs from "fs";
 import express from "express";
-import { pipeLine, transcribe } from "./helper.js";
+import { client, pipeLine, transcribe } from "./helper.js";
 import { fileURLToPath } from "url";
 import cors from "cors";
 import path, { dirname } from "path";
 import Busboy from "busboy";
-import { getFileExtension } from "./conts.js";
+import { FOLDER_NAME, getFileExtension } from "./conts.js";
 import { createClient } from "@deepgram/sdk";
+import { GetObjectCommand, HeadObjectCommand } from "@aws-sdk/client-s3";
+import "./cone.js";
 
 global.__filename = fileURLToPath(import.meta.url);
 global.__dirname = dirname(__filename);
 
 const app = express();
 
-const cleanupTimers = {};
-
 app.use(cors());
+
 app.use(express.json());
+
+
 app.post("/censor", async (req, res) => {
   try {
     const busboy = Busboy({ headers: req.headers });
@@ -56,54 +59,48 @@ app.post("/censor", async (req, res) => {
   }
 });
 
-app.get("/stream/:video", (req, res) => {
-  const fileName = req.params.video;
-  const filePath = path.resolve(__dirname, "temp", fileName);
-
-  fs.stat(filePath, (err, stats) => {
-    if (err) {
-      console.error("File not found:", err);
-      return res.sendStatus(404);
-    }
+app.get("/stream/:video", async (req, res) => {
+  try {
+    const fileName = `${FOLDER_NAME.videos}/${req.params.video}`;
 
     const range = req.headers.range;
+    const head = await client.send(new HeadObjectCommand({ Bucket: process.env.BUCKET_NAME, Key: fileName }));
+    const fileSize = head.ContentLength;
     if (!range) {
       res.writeHead(200, {
-        "Content-Length": stats.size,
+        "Content-Length": fileSize,
         "Content-Type": "video/mp4",
       });
-      fs.createReadStream(filePath).pipe(res);
+      const fullVideo = await client.send(new GetObjectCommand({ Bucket: process.env.BUCKET_NAME, Key: fileName }));
+      fullVideo.Body.pipe(res);
       return;
     }
 
     const CHUNK_SIZE = 1 * 1e6;
     const start = Number(range.replace(/\D/g, ""));
-    const end = Math.min(start + CHUNK_SIZE, stats.size - 1);
+    const end = Math.min(start + CHUNK_SIZE, fileSize - 1);
 
     const contentLength = end - start + 1;
     res.writeHead(206, {
-      "Content-Range": `bytes ${start}-${end}/${stats.size}`,
+      "Content-Range": `bytes ${start}-${end}/${fileSize}`,
       "Accept-Ranges": "bytes",
       "Content-Length": contentLength,
       "Content-Type": "video/mp4",
     });
 
-    fs.createReadStream(filePath, { start, end }).pipe(res);
+    const videoPart = await client.send(
+      new GetObjectCommand({
+        Bucket: process.env.BUCKET_NAME,
+        Key: fileName,
+        Range: `bytes=${start}-${end}`,
+      })
+    );
 
-    res.on("finish", () => {
-      if (cleanupTimers[filePath]) {
-        clearTimeout(cleanupTimers[filePath]);
-      }
-      cleanupTimers[filePath] = setTimeout(() => {
-        fs.unlink(filePath, (err) => {
-          if (err) console.error("Error deleting file:", err);
-          else console.log("File deleted:", filePath);
-        });
-
-        delete cleanupTimers[filePath];
-      }, 60 * 1000);
-    });
-  });
+    videoPart.Body.pipe(res);
+  } catch (error) {
+    console.error("Streaming error:", error);
+    res.sendStatus(500);
+  }
 });
 
 app.post("/get-transcript", (req, res) => {
@@ -148,7 +145,7 @@ app.post("/get-transcript", (req, res) => {
 });
 
 app.listen(process.env.PORT, () => {
-  let tempDir = path.resolve(__dirname, "temp")
+  let tempDir = path.resolve(__dirname, "temp");
   fs.readdir(tempDir, (err, files) => {
     if (err) throw err;
 

@@ -482,3 +482,8 @@ export function getFileExtension(mimeType) {
 
   return map[mimeType] || null; // returns null if unknown
 }
+
+export const FOLDER_NAME = {
+  scripts: "scripts",
+  videos: "videos",
+};
