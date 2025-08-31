@@ -1,7 +1,7 @@
 import { DeleteObjectCommand, ListObjectsV2Command } from "@aws-sdk/client-s3";
 import cron from "node-cron";
 import { client } from "./helper.js";
-cron.schedule("*/2 * * * *", async () => {
+cron.schedule("0 0 * * *", async () => {
   console.log("Running S3 cleanup job...");
 
   try {
